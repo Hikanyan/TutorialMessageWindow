@@ -5,8 +5,6 @@ using UnityEngine.Serialization;
 
 namespace HikanyanLaboratory.Script
 {
-
-
     public class MessageSequencer : MonoBehaviour
     {
         [SerializeField] private MessagePrinter _messagePrinter = default;
@@ -49,9 +47,8 @@ namespace HikanyanLaboratory.Script
             if (_currentIndex + 1 < _messages.Length)
             {
                 _currentIndex++;
-               
-                _messagePrinter?.ShowMessage(_messages[_currentIndex]);
                 _messagePrinter.ApplyEmphasis(_emphasisTexts);
+                _messagePrinter.ShowMessage(_messages[_currentIndex]).Forget();
             }
             else
             {
